@@ -153,78 +153,102 @@ class HomeScreen extends StatelessWidget {
     }
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'My Recipe App',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        'My Recipe App',
+        style: TextStyle(
+          fontSize: 24.0,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      ),
+      backgroundColor: Colors.green[700],
+    ),
+    body: Stack(
+      children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/images/food.webp',
+            fit: BoxFit.cover,
           ),
         ),
-        backgroundColor: Colors.green[700],
-      ),
-      body: Stack(
-        children: [
-
-          Positioned.fill(
-            child: Image.asset(
-              'assets/images/food.webp',
-              fit: BoxFit.cover,
-            ),
+        Positioned.fill(
+          child: Container(
+            color: Colors.black.withOpacity(0.3),
           ),
-
-          Positioned.fill(
-            child: Container(
-              color: Colors.black.withOpacity(0.3),
+        ),
+        Padding(
+          padding: EdgeInsets.all(8.0),
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0,
             ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.all(8.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-              ),
-              itemCount: recipes.length,
-              itemBuilder: (context, index) {
-                final recipe = recipes[index];
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailScreen(
-                          title: recipe['title'],
-                          ingredients: recipe['ingredients'],
-                          instructions: recipe['instructions'],
-                          image: recipe['image'],
-                        ),
+            itemCount: recipes.length,
+            itemBuilder: (context, index) {
+              final recipe = recipes[index];
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailScreen(
+                        title: recipe['title'],
+                        ingredients: recipe['ingredients'],
+                        instructions: recipe['instructions'],
+                        image: recipe['image'],
                       ),
-                    );
-                  },
-                  child: Card(
-                    color: Colors.green[100],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.0),
                     ),
-                    elevation: 6.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                  );
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16.0),
+                  ),
+                  elevation: 6.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16.0),
+                      border: Border.all(
+                        color: const Color.fromARGB(255, 255, 255, 255),
+                        width: 2.0,
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage(recipe['image']),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Stack(
+                      alignment: Alignment.center,
                       children: [
-                        Icon(Icons.restaurant_menu, size: 40.0, color: Colors.green[800]),
-                        SizedBox(height: 10.0),
-                        Text(
-                          recipe['title'],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600, color: Colors.green[900],),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
                         ),
-                      ],
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.restaurant_menu, size: 45.0, color: Colors.white),
+                            SizedBox(height: 10.0),
+                            Text(
+                              recipe['title'],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -236,6 +260,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
 class DetailScreen extends StatelessWidget {
   final String title;
