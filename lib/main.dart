@@ -126,6 +126,30 @@ class HomeScreen extends StatelessWidget {
         'Slide broth, egg, and chicken out on top of a bowl of rice. Sprinkle with scallions and serve.',
       ],
       'image' : 'assets/images/katsudon.jpg',
+    },
+    {
+      'id': 5,
+      'title': 'Pasta Carbonara',
+      'ingredients': [
+        'Bacon',
+        'Water',
+        'Garlic',
+        'Spaghetti or linguine',
+        'Grated Parmesan',
+        'Eggs',
+        'Salt and Pepper',
+        'Fresh Parsley',
+      ],
+      'instructions': [
+        'Add bacon and water to a skillet and bring to a simmer.',
+        'Continue simmering until water is evaporated, then continue to cook the bacon until crispy.',
+        'Remove bacon from pan and reserve the drippings.',
+        'Saute garlic in that same skillet until golden brown, then add to a bowl with 1 tablespoon bacon fat, eggs, egg yolk, Parmesan and pepper. Mix well.',
+        'Meanwhile, cook the spaghetti or linguine pasta until al dente. Once cooked, drain pasta and reserve 1 cup of the cooking water.',
+        'Slowly pour the hot cooking water into the egg mixture. Then pour over the hot pasta and toss to coat. Add crumbled bacon.',
+        'Let pasta rest for a few minutes, tossing frequently until the carbonara sauce thickens. Serve immediately with a sprinkle of fresh parsley.',
+      ],
+      'image' : 'assets/images/carbonara.jpg',
     }
   ];
 
